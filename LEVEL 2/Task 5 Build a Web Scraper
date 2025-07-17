@@ -1,0 +1,13 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.wikipedia.org"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+
+print("Status code:", response.status_code)
+print("Page content length:", len(response.content))
+
+# Example: extract all headings
+for heading in soup.find_all(['h1', 'h2', 'h3']):
+    print(heading.text.strip())
