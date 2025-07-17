@@ -1,0 +1,19 @@
+import os
+
+def rename_text_files(folder_path):
+    """
+    Renames all .txt files in the folder to file_1.txt, file_2.txt, etc.
+    """
+    count = 1
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.txt'):
+            new_name = f"file_{count}.txt"
+            old_path = os.path.join(folder_path, filename)
+            new_path = os.path.join(folder_path, new_name)
+            os.rename(old_path, new_path)
+            print(f"Renamed: {filename} -> {new_name}")
+            count += 1
+    print("All .txt files renamed successfully.")
+if __name__ == "__main__":
+    folder = input("Enter folder path: ")
+    rename_text_files(folder)
